@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+![MIKGame](https://pouch.jumpshare.com/preview/Uncf--uJubNb2cVkadOcrkmZPuHZ_WIR7x85wYCoIl68th02CxYT56ti0cBo-JRzaF2dT0T82xa3LsI-ziJckMMRdp_4sQuy7V4DzbvpFuY)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Description
+MIKGame est une application front-end développée en React Native. Elle s'appuie sur une API construite en .NET et permet de jouer à des jeux d'arcade à l'aide d'un joystick connecté via Arduino.
 
-## Get started
+## Fonctionnalités
+- Interface utilisateur en React Native
+- Connexion à une API .NET pour la gestion des jeux et des scores
+- Support des joysticks via Arduino pour une expérience de jeu authentique
 
-1. Install dependencies
+## Prérequis
+- Node.js
+- React Native CLI
+- .NET SDK
+- Arduino IDE
 
-   ```bash
-   npm install
-   ```
+## Installation
 
-2. Start the app
+### Front-end (React Native)
+1. Clonez le dépôt du projet :
+    ```sh
+    git clone https://github.com/<username>/MIKGame.git
+    cd MIKGame
+    ```
 
-   ```bash
-    npx expo start
-   ```
+2. Installez les dépendances :
+    ```sh
+    npm install
+    ```
 
-In the output, you'll find options to open the app in a
+3. Lancez l'application :
+    ```sh
+    npx react-native run-android # pour Android
+    npx react-native run-ios # pour iOS
+    ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Utilisation
+1. Assurez-vous que l'API .NET est en cours d'exécution.
+2. Lancez l'application React Native sur votre appareil ou émulateur.
+3. Connectez le joystick Arduino à votre appareil.
+4. Profitez des jeux d'arcade !
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Contribuer
+Les contributions sont les bienvenues ! Veuillez soumettre une pull request ou ouvrir une issue pour discuter des changements que vous souhaitez apporter.
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Autheurs
+- [Mickaël](mailto:mickael.t.208@gmail.com)
+- [Kobi](mailto:kobikessava@gmail.com)
+- [Ilian](mailto:iliannecer93@gmail.com)
