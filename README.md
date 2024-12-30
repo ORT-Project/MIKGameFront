@@ -30,8 +30,7 @@ MIKGame est une application front-end développée en React Native. Elle s'appui
 
 3. Lancez l'application :
     ```sh
-    npx react-native run-android # pour Android
-    npx react-native run-ios # pour iOS
+    expo start # pour Android et iOS avec Expo Go
     ```
 
 ## Utilisation
