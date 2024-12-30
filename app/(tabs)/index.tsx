@@ -1,74 +1,110 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated, ImageBackground } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const IndexScreen: React.FC = () => {
+    const headerAnimation = useRef(new Animated.Value(0)).current;
+    const subtitleAnimation = useRef(new Animated.Value(0)).current;
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
-}
+    useEffect(() => {
+        Animated.timing(headerAnimation, {
+            toValue: 1,
+            duration: 1500,
+            useNativeDriver: true,
+        }).start();
+
+        Animated.timing(subtitleAnimation, {
+            toValue: 1,
+            duration: 1500,
+            delay: 500,
+            useNativeDriver: true,
+        }).start();
+    }, []);
+
+    return (
+        <ImageBackground
+            source={{ uri: 'https://i.pinimg.com/originals/3e/72/b3/3e72b311682500305a7e66444743381c.gif' }}
+            style={styles.container}
+        >
+            <View style={styles.textContainer}>
+                <Animated.Text
+                    style={[
+                        styles.header,
+                        {
+                            opacity: headerAnimation,
+                            transform: [
+                                {
+                                    translateY: headerAnimation.interpolate({
+                                        inputRange: [0, 1],
+                                        outputRange: [-50, 0],
+                                    }),
+                                },
+                            ],
+                        },
+                    ]}
+                >
+                    Bienvenue sur MIKGame!
+                </Animated.Text>
+
+                <Animated.Text
+                    style={[
+                        styles.subtitle,
+                        {
+                            opacity: subtitleAnimation,
+                            transform: [
+                                {
+                                    translateY: subtitleAnimation.interpolate({
+                                        inputRange: [0, 1],
+                                        outputRange: [50, 0],
+                                    }),
+                                },
+                            ],
+                        },
+                    ]}
+                >
+                    Choisissez un jeu dans le menu ci-dessous
+                </Animated.Text>
+            </View>
+        </ImageBackground>
+    );
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+    container: {
+        flex: 1,
+    },
+    textContainer: {
+        flex: 1,
+        justifyContent: 'flex-start', // Aligner les textes en haut
+        alignItems: 'center',
+        marginTop: 150, // Ajusté pour être légèrement plus bas
+    },
+    header: {
+        fontSize: 36,
+        fontFamily: 'Press Start 2P', // Police rétro
+        color: '#0c72d5',
+        textShadowColor: 'black',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 5,
+        textAlign: 'center',
+        borderWidth: 3,
+        borderColor: '#0c72d5',
+        padding: 10,
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Fond noir semi-transparent
+    },
+    subtitle: {
+        fontSize: 20,
+        fontFamily: 'Press Start 2P',
+        color: '#FF69B4',
+        marginTop: 20, // Espace entre le header et le sous-titre
+        textShadowColor: 'black',
+        textShadowOffset: { width: 1, height: 1 },
+        textShadowRadius: 3,
+        textAlign: 'center',
+        borderWidth: 2,
+        borderColor: '#FF69B4',
+        padding: 8,
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Fond noir semi-transparent
+    },
 });
+
+export default IndexScreen;
